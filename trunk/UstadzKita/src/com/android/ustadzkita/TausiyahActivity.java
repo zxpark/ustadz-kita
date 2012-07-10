@@ -111,7 +111,7 @@ public class TausiyahActivity extends ListActivity {
 					R.layout.tausiyah_singlelist, from, to);
 			// lv.setAdapter(adapter);
 			setListAdapter(adapter);
-
+			
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
@@ -123,15 +123,8 @@ public class TausiyahActivity extends ListActivity {
 		super.onListItemClick(parent, v, position, id);
 		
 		DBHandler dbHandler = new DBHandler(getApplicationContext(), "ustadzkita2.db", "tausiyah");
+		String data =  dbHandler.getAllData().toString();
 		
-		dbHandler.getData(AR_ID);
-		/*HashMap<String, String> mapData = new HashMap<String, String>();
-		mapData = myMaps.get(position);		
-
-		String title = mapData.get(AR_TITLE);
-		String desc = mapData.get(AR_DESC);
-		String date = mapData.get(AR_DATE);
-		
-		myMaps.add(mapData);*/
+		Toast.makeText(getApplicationContext(), data, 3000).show();
 	}
 }
