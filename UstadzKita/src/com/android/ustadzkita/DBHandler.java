@@ -31,6 +31,7 @@ public class DBHandler extends SQLiteOpenHelper{
     // Creating Tables
     @Override
     public void onCreate(SQLiteDatabase db) {
+    	db.execSQL("DROP TABLE IF EXIST " + tableName);
         String CREATE_tableName = "CREATE TABLE " + tableName + "("
                 + AR_ID + " INTEGER PRIMARY KEY," + AR_TITLE + " TEXT,"
                 + AR_DATE + " DATE," + AR_NAME + " TEXT," +AR_DESC + " TEXT" + ")";
