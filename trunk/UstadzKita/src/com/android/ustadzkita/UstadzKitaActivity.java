@@ -1,4 +1,3 @@
-//test lalalalala
 package com.android.ustadzkita;
 
 import android.app.Activity;
