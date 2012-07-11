@@ -90,7 +90,7 @@ public class DBHandler extends SQLiteOpenHelper {
 	public FormData getData(String IdNews) {
 		FormData DataList = new FormData();
 		String selectQuery = "SELECT * FROM " + tableName
-				+ " WHERE Id = 'AR_ID'";
+				+ " WHERE ttt_id = '" + IdNews + "'";
 
 		SQLiteDatabase db = this.getWritableDatabase();
 		Cursor cursor = db.rawQuery(selectQuery, null);
