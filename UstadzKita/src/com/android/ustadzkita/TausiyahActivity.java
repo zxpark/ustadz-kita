@@ -37,6 +37,7 @@ public class TausiyahActivity extends ListActivity {
 	private static final String AR_DESC = "ttt_desc";
 
 	List<HashMap<String, String>> myMaps;
+	List<String> mapData;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -63,6 +64,7 @@ public class TausiyahActivity extends ListActivity {
 			String[] from = new String[] { "title", "desc", "date" };
 			int[] to = new int[] { R.id.ttt_title, R.id.ttt_desc, R.id.ttt_date };
 			myMaps = new ArrayList<HashMap<String, String>>();
+			mapData = new ArrayList<String>();
 
 			JSONObject jo = new JSONObject(catchData);
 			JSONArray jr = jo.getJSONArray("items");
@@ -102,6 +104,7 @@ public class TausiyahActivity extends ListActivity {
 							+ mmm_name);
 
 					myMaps.add(map);
+					mapData.add(i, AR_ID);
 					dbHandler.addData(new FormData(Integer.parseInt(ttt_id),
 							ttt_title, ttt_date, mmm_name, ttt_desc));
 				}
@@ -123,8 +126,8 @@ public class TausiyahActivity extends ListActivity {
 		super.onListItemClick(parent, v, position, id);
 		
 		DBHandler dbHandler = new DBHandler(getApplicationContext(), "ustadzkita2.db", "tausiyah");
-		String data =  dbHandler.getAllData().toString();
+		FormData data =  dbHandler.getData(mapData.get(position));
 		
-		Toast.makeText(getApplicationContext(), data, 3000).show();
+		Toast.makeText(getApplicationContext(), data.getID() , 3000).show();
 	}
 }
