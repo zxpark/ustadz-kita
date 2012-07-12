@@ -5,11 +5,38 @@
     android:orientation="vertical" >
 
     <TextView
-        android:id="@+id/param"
+        android:id="@+id/ttt_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="#333333"
         android:textSize="14dip"
         android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/ttt_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="5dip"
+        android:paddingTop="5dip"
+        android:textColor="#999999"
+        android:textSize="10dip"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/mmm_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="5dip"
+        android:paddingTop="5dip"
+        android:textColor="#999999"
+        android:textSize="10dip"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/ttt_desc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#333333"
+        android:textSize="12dip" />
 
 </LinearLayout>
