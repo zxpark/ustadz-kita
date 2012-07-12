@@ -8,6 +8,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.widget.Toast;
 
 public class DBHandler extends SQLiteOpenHelper {
 	// All Static variables
@@ -88,21 +89,23 @@ public class DBHandler extends SQLiteOpenHelper {
 	}
 
 	public FormData getData(String IdNews) {
-		FormData DataList = new FormData();
+		//FormData DataList = new FormData();
 		String selectQuery = "SELECT * FROM " + tableName
-				+ " WHERE ttt_id = '" + IdNews + "'";
+				+ " WHERE ttt_id = " + IdNews;
 
 		SQLiteDatabase db = this.getWritableDatabase();
 		Cursor cursor = db.rawQuery(selectQuery, null);
 
+		cursor.moveToFirst();
 		FormData formData = new FormData();
-		formData.setID(Integer.parseInt(cursor.getString(0)));
-		formData.setTitle(cursor.getString(1));
-		formData.setDate(cursor.getString(2));
-		formData.setName(cursor.getString(3));
-		formData.setDesc(cursor.getString(4));
-
-		return DataList;
+		//if (cursor.getCount() > 0) {
+			formData.setID(Integer.parseInt(cursor.getString(0)));
+			formData.setTitle(cursor.getString(1));
+			formData.setDate(cursor.getString(2));
+			formData.setName(cursor.getString(3));
+			formData.setDesc(cursor.getString(4));
+		//}
+		return formData;
 	}
 
 	// Getting All Contacts
