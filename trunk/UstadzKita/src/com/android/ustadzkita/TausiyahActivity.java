@@ -48,8 +48,8 @@ public class TausiyahActivity extends ListActivity {
 
 		// ListView lv = (ListView) this.findViewById(R.id.listView);
 
-		DBHandler dbHandler = new DBHandler(getBaseContext(), "ustadzkita2.db",
-				"tausiyah");
+		DBHandlerTausiyah dbHandler = new DBHandlerTausiyah(getBaseContext(),
+				"ustadzkita2.db", "tausiyah");
 
 		HttpUtils getData = new HttpUtils();
 		String catchData = null;
@@ -126,9 +126,14 @@ public class TausiyahActivity extends ListActivity {
 			long id) {
 		super.onListItemClick(parent, v, position, id);
 
-		DBHandler dbHandler = new DBHandler(getApplicationContext(),
-				"ustadzkita2.db", "tausiyah");
+		DBHandlerTausiyah dbHandler = new DBHandlerTausiyah(
+				getApplicationContext(), "ustadzkita2.db", "tausiyah");
 		FormData data = dbHandler.getData((String) mapData.elementAt(position));
+		// DBHandlerTausiyah dbHandler = new
+		// DBHandlerTausiyah(getApplicationContext(),
+		// "ustadzkita2.db", "tausiyah");
+		// FormData data = dbHandler.getData((String)
+		// mapData.elementAt(position));
 
 		// Toast.makeText(getApplicationContext(), data.getTitle(),
 		// 3000).show();
@@ -138,7 +143,7 @@ public class TausiyahActivity extends ListActivity {
 		param.putString("name", data.getName().toString());
 		param.putString("desc", data.getDesc().toString());
 		Intent intent = new Intent(v.getContext(), DetailTausiyah.class);
-		intent.putExtra("data",param);
+		intent.putExtra("data", param);
 		startActivity(intent);
 	}
 }
