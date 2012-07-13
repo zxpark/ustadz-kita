@@ -13,14 +13,14 @@ import android.os.Bundle;
 
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
-import android.widget.Toast;
+//import android.widget.Toast;
 import android.app.Activity;
 
 public class UstadzTeraktifActivity extends Activity {
 	
 	private static String link_url = "http://119.82.224.38/services/getmemberstop.php";
 	
-	private static final String UT_MMMID = "mmm_id";
+	//private static final String UT_MMMID = "mmm_id";
 	private static final String UT_MMM_NAME = "mmm_name";
 	//private static final String UT_PHOTO = "mmm_photo_name";
 	private static final String UT_TK = "totalkajian";
@@ -53,7 +53,7 @@ public class UstadzTeraktifActivity extends Activity {
 			JSONObject jo = new JSONObject(catchData);
 			JSONArray jr = jo.getJSONArray("items");
 			
-			String[] arrTitle = null;
+			//String[] arrTitle = null;
 			
 			if(jr != null) {
 			
