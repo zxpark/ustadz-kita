@@ -16,10 +16,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
-import android.widget.Toast;
+//import android.widget.Toast;
 //import android.app.Activity;
 import android.app.ListActivity;
 //import android.content.Intent;
+import android.content.Intent;
 
 public class KajianActivity extends ListActivity {
 
@@ -38,12 +39,12 @@ public class KajianActivity extends ListActivity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		//setContentView(R.layout.kajian);
+		// setContentView(R.layout.kajian);
 
 		// ListView lv = (ListView) this.findViewById(R.id.listView);
 
-		DBHandler dbHandler = new DBHandler(getBaseContext(), "ustadzkita2.db",
-				"kajian");
+		DBHandlerKajian dbHandler = new DBHandlerKajian(getBaseContext(),
+				"ustadzkita2.db", "kajian");
 
 		HttpUtils getData = new HttpUtils();
 		String catchData = null;
@@ -83,6 +84,7 @@ public class KajianActivity extends ListActivity {
 					String tkj_desc = ar.getString(AR_DESC);
 					// String tth_id = ar.getString(AR_TTHID);
 
+					map.put("id", tkj_id);
 					map.put("title", tkj_title);
 					map.put("desc",
 							new String(
@@ -100,8 +102,9 @@ public class KajianActivity extends ListActivity {
 
 					myMaps.add(map);
 					mapData.add(tkj_id);
-					dbHandler.addData(new FormData(Integer.parseInt(tkj_id),
-							tkj_title, tkj_date, mmm_name, tkj_desc));
+					dbHandler.addData(new FormDataKajian(Integer
+							.parseInt(tkj_id), tkj_title, tkj_date, mmm_name,
+							tkj_desc));
 				}
 			}
 
@@ -120,15 +123,26 @@ public class KajianActivity extends ListActivity {
 			long id) {
 		super.onListItemClick(parent, v, position, id);
 
-		DBHandler dbHandler = new DBHandler(getApplicationContext(),
-				"ustadzkita2.db", "kajian");
-		FormData data = dbHandler.getData((String) mapData.elementAt(position));
+		DBHandlerKajian dbHandler = new DBHandlerKajian(
+				getApplicationContext(), "ustadzkita2.db", "kajian");
+		FormDataKajian data = dbHandler.getData((String) mapData
+				.elementAt(position));
 
-		Toast.makeText(getApplicationContext(), data.getTitle(), 3000).show();
+		// Toast.makeText(getApplicationContext(), data.getTitle(),
+		// 3000).show();
 		// Bundle param = new Bundle();
 		// param.putString("title", data.getTitle().toString());
 
 		// Intent intent = new Intent(this, DetailTausiyah.class);
 		// startActivity(intent.putExtra("title", param));
+
+		Bundle param = new Bundle();
+		param.putString("title", data.getTitle().toString());
+		param.putString("date", data.getDate().toString());
+		param.putString("name", data.getName().toString());
+		param.putString("desc", data.getDesc().toString());
+		Intent intent = new Intent(v.getContext(), DetailKajian.class);
+		intent.putExtra("data", param);
+		startActivity(intent);
 	}
 }
