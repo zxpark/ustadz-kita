@@ -29,9 +29,9 @@ public class UstadzTeraktifAdapter extends ArrayAdapter<String> {
 		//ImageView mmm_photo_name = (ImageView) rowView.findViewById(R.id.mmm_photo_name);
 		//TextView tkj_date = (TextView) rowView.findViewById(R.id.tkj_date);
 		TextView mmm_name = (TextView) rowView.findViewById(R.id.mmm_name);
-		TextView totaltausiyah = (TextView) rowView.findViewById(R.id.totaltausiyah);
-		TextView totalkajian = (TextView) rowView.findViewById(R.id.totalkajian);
-		TextView total = (TextView) rowView.findViewById(R.id.total);
+		//TextView totaltausiyah = (TextView) rowView.findViewById(R.id.totaltausiyah);
+		//TextView totalkajian = (TextView) rowView.findViewById(R.id.totalkajian);
+		//TextView total = (TextView) rowView.findViewById(R.id.total);
 		
 		mmm_name.setText(Values[position]);
 		//return convertView;
