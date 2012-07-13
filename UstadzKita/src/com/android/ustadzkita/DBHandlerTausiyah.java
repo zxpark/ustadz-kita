@@ -36,6 +36,7 @@ public class DBHandlerTausiyah extends SQLiteOpenHelper {
 				+ AR_DATE + " DATE," + AR_NAME + " TEXT," + AR_DESC + " TEXT"
 				+ ")";
 		db.execSQL(CREATE_tableName);
+		db.close();
 	}
 
 	// Upgrading database
@@ -46,6 +47,7 @@ public class DBHandlerTausiyah extends SQLiteOpenHelper {
 
 		// Create tables again
 		onCreate(db);
+		db.close();
 	}
 
 	/**
@@ -85,6 +87,7 @@ public class DBHandlerTausiyah extends SQLiteOpenHelper {
 				cursor.getString(1), cursor.getString(2), cursor.getString(3),
 				cursor.getString(4));
 		// return contact
+		db.close();
 		return formData;
 	}
 
@@ -105,6 +108,7 @@ public class DBHandlerTausiyah extends SQLiteOpenHelper {
 			formData.setName(cursor.getString(3));
 			formData.setDesc(cursor.getString(4));
 		//}
+		db.close();
 		return formData;
 	}
 
@@ -132,6 +136,7 @@ public class DBHandlerTausiyah extends SQLiteOpenHelper {
 		}
 
 		// return contact list
+		db.close();
 		return DataList;
 	}
 
@@ -167,6 +172,7 @@ public class DBHandlerTausiyah extends SQLiteOpenHelper {
 		cursor.close();
 
 		// return count
+		db.close();
 		return cursor.getCount();
 	}
 }
