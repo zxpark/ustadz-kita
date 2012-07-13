@@ -102,7 +102,7 @@ public class KajianActivity extends ListActivity {
 
 					myMaps.add(map);
 					mapData.add(tkj_id);
-					dbHandler.addData(new FormDataKajian(Integer
+					dbHandler.addDataKajian(new FormDataKajian(Integer
 							.parseInt(tkj_id), tkj_title, tkj_date, mmm_name,
 							tkj_desc));
 				}
