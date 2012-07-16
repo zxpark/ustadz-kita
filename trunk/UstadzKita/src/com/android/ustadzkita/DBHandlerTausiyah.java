@@ -22,10 +22,12 @@ public class DBHandlerTausiyah extends SQLiteOpenHelper {
 	private static final String AR_NAME = "mmm_name";
 	private static final String AR_DESC = "ttt_desc";
 	private String tableName = "";
+	public SQLiteDatabase db;
 
 	public DBHandlerTausiyah(Context context, String dbName, String tableName) {
 		super(context, dbName, null, DATABASE_VERSION);
 		this.tableName = tableName;
+		this.db = this.getWritableDatabase();
 	}
 
 	// Creating Tables
@@ -36,7 +38,7 @@ public class DBHandlerTausiyah extends SQLiteOpenHelper {
 				+ AR_DATE + " DATE," + AR_NAME + " TEXT," + AR_DESC + " TEXT"
 				+ ")";
 		db.execSQL(CREATE_tableName);
-		db.close();
+		//db.close();
 	}
 
 	// Upgrading database
@@ -47,7 +49,7 @@ public class DBHandlerTausiyah extends SQLiteOpenHelper {
 
 		// Create tables again
 		onCreate(db);
-		db.close();
+		//db.close();
 	}
 
 	/**
