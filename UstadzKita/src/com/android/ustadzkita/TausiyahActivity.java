@@ -40,6 +40,11 @@ public class TausiyahActivity extends ListActivity {
 
 	List<HashMap<String, String>> myMaps;
 	Vector<String> mapData = new Vector<String>();
+	
+	@Override
+    protected void onPause() {
+        super.onPause();
+    }
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
