@@ -8,6 +8,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+//import android.sax.StartElementListener;
 //import android.widget.Toast;
 
 public class DBHandlerTausiyah extends SQLiteOpenHelper {
@@ -38,6 +39,7 @@ public class DBHandlerTausiyah extends SQLiteOpenHelper {
 				+ AR_DATE + " DATE," + AR_NAME + " TEXT," + AR_DESC + " TEXT"
 				+ ")";
 		db.execSQL(CREATE_tableName);
+		//this.getWritableDatabase();
 		//db.close();
 	}
 
@@ -89,6 +91,8 @@ public class DBHandlerTausiyah extends SQLiteOpenHelper {
 				cursor.getString(1), cursor.getString(2), cursor.getString(3),
 				cursor.getString(4));
 		// return contact
+		
+		//cursor.close();
 		db.close();
 		return formData;
 	}
@@ -101,14 +105,17 @@ public class DBHandlerTausiyah extends SQLiteOpenHelper {
 		SQLiteDatabase db = this.getWritableDatabase();
 		Cursor cursor = db.rawQuery(selectQuery, null);
 
+		//if(cursor != null)
 		cursor.moveToFirst();
+			
 		FormData formData = new FormData();
-		//if (cursor.getCount() > 0) {
+		//if (cursor.moveToFirst()) {
 			formData.setID(Integer.parseInt(cursor.getString(0)));
 			formData.setTitle(cursor.getString(1));
 			formData.setDate(cursor.getString(2));
 			formData.setName(cursor.getString(3));
 			formData.setDesc(cursor.getString(4));
+			//cursor.close();
 		//}
 		db.close();
 		return formData;
@@ -124,20 +131,24 @@ public class DBHandlerTausiyah extends SQLiteOpenHelper {
 		Cursor cursor = db.rawQuery(selectQuery, null);
 
 		// looping through all rows and adding to list
-		if (cursor.moveToFirst()) {
-			do {
-				FormData formData = new FormData();
-				formData.setID(Integer.parseInt(cursor.getString(0)));
-				formData.setTitle(cursor.getString(1));
-				formData.setDate(cursor.getString(2));
-				formData.setName(cursor.getString(3));
-				formData.setDesc(cursor.getString(4));
-				// Adding contact to list
-				DataList.add(formData);
-			} while (cursor.moveToNext());
-		}
-
+		//if(cursor.getCount() > 0){
+			if (cursor.moveToFirst()) {
+				do {
+					FormData formData = new FormData();
+					formData.setID(Integer.parseInt(cursor.getString(0)));
+					formData.setTitle(cursor.getString(1));
+					formData.setDate(cursor.getString(2));
+					formData.setName(cursor.getString(3));
+					formData.setDesc(cursor.getString(4));
+					// Adding contact to list
+					DataList.add(formData);
+					//cursor.close();
+				} while (cursor.moveToNext());
+			}
+		//}
+		//this.getWritableDatabase();
 		// return contact list
+		//cursor.close();
 		db.close();
 		return DataList;
 	}
