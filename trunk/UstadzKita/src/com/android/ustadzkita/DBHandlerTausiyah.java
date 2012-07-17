@@ -133,7 +133,7 @@ public class DBHandlerTausiyah extends SQLiteOpenHelper {
 		// looping through all rows and adding to list
 		//if(cursor.getCount() > 0){
 			if (cursor.moveToFirst()) {
-				do {
+				do { 
 					FormData formData = new FormData();
 					formData.setID(Integer.parseInt(cursor.getString(0)));
 					formData.setTitle(cursor.getString(1));
